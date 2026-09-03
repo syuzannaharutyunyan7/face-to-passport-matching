@@ -1,182 +1,81 @@
-Face ID Comparison
+# Face ID Comparison
+
 A Java desktop application for comparing ID photos and selfies using image processing and grayscale histogram correlation.
+
 The application was created to make it easier to process a dataset of ID and selfie images, extract relevant face regions, compare the resulting images, and review the comparison results through a simple graphical interface.
 
-Author
-Syuzanna Harutyunyan
-About the Project
+## Author
+
+**Syuzanna Harutyunyan**
+
+## About the Project
+
 Face ID Comparison is a Java Swing desktop application designed around a simple image-comparison pipeline.
+
 The application processes a dataset containing numbered folders and performs the following operations:
 
-Finds the dataset folders.
-Extracts face regions from the original images.
-Identifies ID and selfie images.
-Compares ID images with selfie images.
-Calculates a similarity value using grayscale histograms.
-Classifies the comparison result as either:
-SAME PERSON
-DIFFERENT
-Displays the results through a graphical user interface.
-Allows the comparison results to be exported to a CSV file.
+1. Finds the dataset folders.
+2. Extracts face regions from the original images.
+3. Identifies ID and selfie images.
+4. Compares ID images with selfie images.
+5. Calculates a similarity value using grayscale histograms.
+6. Classifies the comparison result as either:
+   - `SAME PERSON`
+   - `DIFFERENT`
+7. Displays the results through a graphical user interface.
+8. Allows the comparison results to be exported to a CSV file.
+
 The main goal of the project is to provide a practical and easy-to-use tool for experimenting with image processing, face extraction, and image similarity comparison.
-Note: This project is intended as an image-processing and comparison experiment. Histogram correlation is a visual similarity technique and should not be considered a production-grade biometric face-recognition system.
-Features
-Java desktop application
-Java Swing graphical user interface
-Dataset folder selection
-Automatic detection of numbered dataset folders
-Face-region extraction
-ID and selfie image processing
-Grayscale image conversion
-Grayscale histogram generation
-Histogram correlation for image comparison
-Similarity score calculation
-Automatic classification:
-SAME PERSON
-DIFFERENT
-Processing progress indicators
-Real-time processing log
-ID image preview
-Selfie image preview
-Sortable comparison results table
-CSV result generation
-Batch processing of multiple dataset folders
-How the Application Works
-The application uses a multi-step image-processing pipeline.
-1. Select Dataset
-The user selects the root directory containing the dataset.
-For example:
 
-Dataset/
-├── 1/
-├── 2/
-├── 3/
-└── ...
+> **Note:** This project is intended as an image-processing and comparison experiment. Histogram correlation is a visual similarity technique and should not be considered a production-grade biometric face-recognition system.
 
-2. Find Dataset Folders
-The application searches for numbered folders inside the selected dataset directory.
-Each numbered folder represents a dataset sample or comparison group.
+## Features
 
-3. Extract Face Regions
-The application processes the images and extracts the relevant face regions.
-This helps reduce the influence of unnecessary image content such as backgrounds and other objects.
+- Java desktop application
+- Java Swing graphical user interface
+- Dataset folder selection
+- Automatic detection of numbered dataset folders
+- Face-region extraction
+- ID and selfie image processing
+- Grayscale image conversion
+- Grayscale histogram generation
+- Histogram correlation for image comparison
+- Similarity score calculation
+- Automatic classification:
+  - `SAME PERSON`
+  - `DIFFERENT`
+- Processing progress indicators
+- Real-time processing log
+- ID image preview
+- Selfie image preview
+- Sortable comparison results table
+- CSV result generation
+- Batch processing of multiple dataset folders
 
-4. Identify ID and Selfie Images
-The application identifies the processed images as either ID images or selfie images based on the dataset naming/processing structure.
-5. Compare Images
-The application compares ID images with selfie images using grayscale histograms.
-The images are converted to grayscale and their pixel-intensity distributions are analyzed.
+## How the Application Works
 
-6. Calculate Similarity
-A histogram correlation value is calculated to estimate how similar the two images are.
-The resulting similarity value is then used to classify the comparison.
+The application follows a simple image-processing pipeline:
 
-7. Display Results
-The graphical interface displays:
-ID image
-Selfie image
-Similarity score
-Comparison decision
-Processing information
-8. Export Results
-The comparison results can be saved as a CSV file for further analysis.
-Image Comparison Method
-The project uses grayscale histogram correlation as its primary comparison method.
-A grayscale image contains pixel values representing brightness, typically ranging from:
+1. The user selects the dataset folder.
+2. The application searches for numbered dataset folders.
+3. Images inside the folders are processed.
+4. Relevant face regions are extracted from the images.
+5. ID and selfie images are identified.
+6. The extracted images are converted to grayscale.
+7. Grayscale histograms are calculated.
+8. Histograms are compared using correlation.
+9. A similarity score is calculated.
+10. The similarity score is used to classify the result.
+11. Results are displayed in the graphical interface.
+12. Results can be exported to a CSV file.
 
-0   → Black
-255 → White
+## Dataset Structure
 
-A histogram represents the distribution of these grayscale values within an image.
-For example:
+The application expects a dataset containing numbered folders, from `1` to `10`.
 
-Pixel intensity
-0 ─────────────────────── 255
-│
-│       ███
-│    ███████
-│  ███████████
-│ █████████████
-└──────────────────────────
-       Histogram
+A typical dataset can look like this:
 
-The histograms of two images are compared using correlation.
-A higher correlation indicates that the grayscale distributions are more similar, while a lower correlation indicates greater visual difference.
-
-Important Consideration
-Histogram correlation compares image characteristics rather than understanding facial identity.
-Factors such as:
-
-lighting
-image quality
-pose
-facial expression
-background
-cropping
-camera quality
-can influence the similarity score.
-Therefore, the SAME PERSON / DIFFERENT result should be interpreted as the output of the implemented image-comparison algorithm rather than definitive identity verification.
-
-Classification
-The similarity score is compared against a configured threshold.
-Conceptually:
-
-Similarity Score
-       │
-       ▼
-   ┌───────────┐
-   │ Compare   │
-   │ threshold │
-   └─────┬─────┘
-         │
-    ┌────┴────┐
-    │         │
-  >= T       < T
-    │         │
-    ▼         ▼
-SAME       DIFFERENT
-PERSON
-
-Where T represents the configured similarity threshold.
-The threshold can be adjusted depending on the dataset and the desired comparison sensitivity.
-
-User Interface
-The application provides a graphical interface built with Java Swing.
-The interface includes the following components:
-
-Dataset Selection
-Allows the user to select the root dataset folder.
-Folder Browser
-Displays or allows navigation through the selected dataset directory.
-Pipeline Execution
-A button is provided to start the complete processing pipeline.
-Face Extraction Progress
-Shows the progress of face-region extraction.
-Comparison Progress
-Displays the progress of ID/selfie comparisons.
-Processing Log
-Provides information about the current processing stage, including successful operations and errors.
-Image Preview
-The interface displays the images being compared:
-ID image
-Selfie image
-Similarity Score
-Displays the calculated similarity value for the selected comparison.
-Comparison Decision
-Displays the final classification:
-SAME PERSON
-
-or
-DIFFERENT
-
-Results Table
-A sortable table allows the user to review multiple comparisons.
-CSV Export
-The comparison results can be exported to a CSV file for further processing.
-Dataset Structure
-The application expects a dataset containing numbered folders.
-For example:
-
+```text
 Dataset/
 │
 ├── 1/
@@ -196,6 +95,8 @@ Dataset/
 │   ├── ID_2.jpg
 │   ├── selfie_1.jpg
 │   └── ...
+│
+├── ...
 │
 └── 10/
     ├── ID_1.jpg
@@ -203,170 +104,219 @@ Dataset/
     ├── selfie_1.jpg
     └── ...
 
-Each numbered folder represents one dataset group.
-For example:
+Each numbered folder represents a dataset group containing ID and selfie images.
+Image Processing
+The application extracts the relevant face regions from the original images before performing the comparison.
+This allows the comparison to focus primarily on the face region instead of the entire image.
 
-1/
+The processing pipeline can be summarized as:
 
-may contain all ID and selfie images belonging to one person or comparison group.
-The exact image naming convention should match the expectations of the application's processing logic.
+Original Images
+       │
+       ▼
+Face Extraction
+       │
+       ▼
+ID / Selfie Images
+       │
+       ▼
+Grayscale Conversion
+       │
+       ▼
+Histogram Generation
+       │
+       ▼
+Histogram Correlation
+       │
+       ▼
+Similarity Score
+       │
+       ▼
+Classification
+       │
+   ┌───┴────┐
+   ▼        ▼
+SAME      DIFFERENT
+PERSON
 
-Example Dataset
-A complete dataset might look like:
-Dataset/
-│
-├── 1/
-│   ├── ID_1.jpg
-│   ├── ID_2.jpg
-│   ├── selfie_1.jpg
-│   └── selfie_2.jpg
-│
-├── 2/
-│   ├── ID_1.jpg
-│   ├── ID_2.jpg
-│   ├── selfie_1.jpg
-│   └── selfie_2.jpg
-│
-├── 3/
-│   ├── ID_1.jpg
-│   ├── selfie_1.jpg
-│   └── selfie_2.jpg
-│
-└── 10/
-    ├── ID_1.jpg
-    └── selfie_1.jpg
+Grayscale Histogram Correlation
+The application uses grayscale histograms to compare ID photos and selfies.
+A grayscale histogram represents the distribution of pixel intensity values in an image.
 
-Processing Pipeline
-The complete workflow can be summarized as:
-                 Dataset
-                    │
-                    ▼
-          Select Dataset Folder
-                    │
-                    ▼
-        Find Numbered Directories
-                    │
-                    ▼
-             Load Images
-                    │
-                    ▼
-          Extract Face Regions
-                    │
-                    ▼
-          Identify ID / Selfie
-                    │
-                    ▼
-          Convert Images to
-              Grayscale
-                    │
-                    ▼
-          Generate Histograms
-                    │
-                    ▼
-       Calculate Histogram
-            Correlation
-                    │
-                    ▼
-          Apply Threshold
-                    │
-             ┌──────┴──────┐
-             ▼             ▼
-        SAME PERSON     DIFFERENT
-             │             │
-             └──────┬──────┘
-                    ▼
-            Display Results
-                    │
-                    ▼
-               Export CSV
+The images are first converted to grayscale and then their histograms are calculated.
 
+The histograms are compared using correlation to produce a similarity value.
+
+In general:
+
+A higher correlation indicates greater similarity between the images.
+A lower correlation indicates greater difference between the images.
+The similarity score is then compared against the configured classification threshold.
+Classification
+The application classifies each comparison into one of two categories:
+SAME PERSON
+The calculated similarity is above the configured threshold.
+DIFFERENT
+The calculated similarity is below the configured threshold.
+The threshold can affect the final classification and should be selected according to the characteristics of the dataset.
+
+User Interface
+The application provides a Java Swing graphical interface with the following functionality:
+Dataset folder selection
+Folder browser
+Complete pipeline execution
+Face extraction progress
+Comparison progress
+Processing log
+ID image preview
+Selfie image preview
+Similarity score display
+Comparison decision display
+Sortable comparison table
+CSV result generation
+The interface allows the user to process and review the dataset without manually opening and comparing every image.
 Results
-The application produces comparison results containing information such as:
+After the processing is complete, the application displays the comparison results in a sortable table.
+A comparison result contains information such as:
+
 Dataset	ID Image	Selfie Image	Similarity	Decision
 1	ID_1.jpg	selfie_1.jpg	0.XX	SAME PERSON
 2	ID_1.jpg	selfie_1.jpg	0.XX	DIFFERENT
 3	ID_2.jpg	selfie_1.jpg	0.XX	SAME PERSON
 
-The exact columns and values depend on the implementation and dataset.
-CSV Output
-After processing, the application can save comparison results to a CSV file.
-A typical CSV structure may look like:
+The exact similarity values depend on the input images and processing results.
+CSV Export
+The application allows comparison results to be saved to a CSV file.
+A typical CSV file can contain:
 
 Dataset,ID Image,Selfie Image,Similarity,Decision
 1,ID_1.jpg,selfie_1.jpg,0.XX,SAME PERSON
 2,ID_1.jpg,selfie_1.jpg,0.XX,DIFFERENT
 3,ID_2.jpg,selfie_1.jpg,0.XX,SAME PERSON
 
-The CSV file makes it easier to:
-analyze results
-filter comparisons
-calculate statistics
-import results into Excel
-perform additional data analysis
-compare different threshold values
+The CSV results can be used for:
+Further analysis
+Sorting and filtering
+Spreadsheet processing
+Statistical evaluation
+Dataset comparison
+Technologies
+The project is built using:
+Java
+Java Swing
+Image Processing
+Grayscale Histograms
+Histogram Correlation
+CSV
 Requirements
-Before running the application, make sure you have:
+To run the application, you need:
 Java Development Kit (JDK)
-A Java-compatible development environment or build system
+A Java-compatible IDE or build environment
 The required project dependencies
 A compatible image dataset
-It is recommended to use a modern JDK version compatible with the project's source code.
 Installation
-1. Clone the Repository
 Clone the repository:
-git clone https://github.com/YOUR_USERNAME/face-id-comparison.git
+git clone <repository-url>
 
-Move into the project directory:
-cd face-id-comparison
+Navigate to the project directory:
+cd <project-directory>
 
-2. Open the Project
-Open the project in your preferred Java IDE, such as:
+Open the project in a Java IDE such as:
 IntelliJ IDEA
 Eclipse
 NetBeans
-Visual Studio Code with Java extensions
-3. Configure Dependencies
-Make sure all required project dependencies are available and correctly configured.
-If the project uses Maven, run:
-
-mvn clean install
-
-If the project uses Gradle, run:
-./gradlew build
-
-If the project does not use a build system, configure the required libraries through the IDE.
-Running the Application
-After configuring the project, run the application's main Java class from your IDE.
-Alternatively, if the project is packaged as a JAR:
-
-java -jar face-id-comparison.jar
-
-The graphical interface should open after the application starts.
-Basic Usage
+Visual Studio Code
+Make sure all required dependencies are configured before running the application.
+Usage
 Start the application.
-Select the dataset directory.
-Verify that the dataset contains the expected numbered folders.
+Select the dataset folder.
+Make sure the dataset contains the expected numbered folders.
 Start the complete processing pipeline.
-Wait for face extraction to finish.
-Wait for image comparison to finish.
+Wait for face extraction to complete.
+Wait for image comparison to complete.
 Review the processing log.
-Select individual comparisons from the results table.
-Inspect the ID and selfie previews.
+Review the comparison results in the table.
+Select a result to view the corresponding ID and selfie images.
 Review the similarity score and classification.
 Export the results to CSV if required.
-Error Handling
-The application should handle common processing problems such as:
-Invalid dataset folders
-Missing images
-Unsupported image files
-Images where a face cannot be detected
-Empty folders
-Invalid image paths
-Image-processing errors
-Processing information and errors are displayed in the application log where applicable.
+Example
+For a dataset containing:
+Dataset/
+├── 1/
+│   ├── ID_1.jpg
+│   └── selfie_1.jpg
+│
+├── 2/
+│   ├── ID_1.jpg
+│   └── selfie_1.jpg
+│
+└── 3/
+    ├── ID_1.jpg
+    └── selfie_1.jpg
+
+The application processes each folder and compares the corresponding ID and selfie images.
+A result may look like:
+
+ID Image:       ID_1.jpg
+Selfie Image:   selfie_1.jpg
+Similarity:     0.XX
+Decision:       SAME PERSON
+
+Limitations
+The current comparison method has several limitations.
+Histogram-Based Comparison
+A grayscale histogram describes the distribution of pixel intensities. It does not directly understand facial features or determine whether two faces belong to the same person.
+Lighting
+Different lighting conditions can significantly affect the grayscale histogram.
+Pose
+Differences in face angle, position, or expression can affect the similarity score.
+Image Quality
+Blurred, low-resolution, compressed, or poorly exposed images may produce less reliable results.
+Background and Cropping
+Differences in image cropping and remaining background information can also influence histogram correlation.
+Biometric Accuracy
+The application should not be considered a production biometric identity verification system.
+The SAME PERSON and DIFFERENT classifications are based on the implemented image-comparison method and should not be treated as definitive proof of identity.
+
+Future Improvements
+Possible improvements include:
+More accurate face detection
+Face alignment
+Improved image preprocessing
+Automatic image resizing
+More advanced image comparison methods
+Facial landmark detection
+Feature-based face comparison
+Face embeddings
+Deep-learning-based face recognition
+Configurable similarity thresholds
+More detailed CSV reports
+Result statistics and visualization
+Multi-threaded image processing
+Improved error handling
+Automated testing
+Privacy
+ID documents and selfies may contain sensitive personal information.
+When working with real datasets:
+
+Only use images that you are authorized to process.
+Do not upload private ID documents or selfies to a public repository.
+Do not commit sensitive datasets to GitHub.
+Use anonymized or synthetic images when possible.
+Store processed images securely.
+Follow applicable privacy and data-protection requirements.
+It is recommended to add dataset and image files to .gitignore if they should not be committed to the repository.
+Example:
+
+dataset/
+*.jpg
+*.jpeg
+*.png
+*.webp
+
 Project Structure
-A possible project structure is:
-face-id-comparison/
+A typical project structure may look like:
+Face-ID-Comparison/
 │
 ├── src/
 │   └── ...
@@ -374,118 +324,22 @@ face-id-comparison/
 ├── dataset/
 │   └── ...
 │
+├── output/
+│   └── ...
+│
 ├── README.md
-├── pom.xml
 └── ...
 
-The exact structure depends on the project configuration.
-Technologies
-The project is built primarily with:
-Java
-Java Swing
-Image Processing
-Grayscale Histograms
-Histogram Correlation
-CSV Export
-Use Cases
-This project can be useful for:
-Experimenting with image processing
-Learning Java Swing
-Processing image datasets
-Exploring histogram-based image comparison
-Comparing ID photos and selfies
-Building simple computer-vision workflows
-Studying the effects of image preprocessing on similarity
-Generating structured comparison results
-Limitations
-The current approach has several limitations.
-Histogram-Based Comparison
-A grayscale histogram describes the distribution of pixel intensities. It does not capture the complete spatial structure of a face.
-Two different faces with similar lighting and image characteristics may produce similar histogram distributions.
+The actual structure may vary depending on the project implementation.
+Disclaimer
+This project is intended for educational and experimental purposes.
+The image comparison method is based on grayscale histogram correlation and does not provide definitive biometric identity verification.
 
-Lighting Sensitivity
-Different lighting conditions can significantly change the grayscale histogram.
-Pose and Expression
-Differences in:
-head position
-facial angle
-facial expression
-distance from the camera
-may affect the resulting similarity score.
-Image Quality
-Blurred, compressed, low-resolution, or poorly exposed images can reduce comparison reliability.
-Face Detection
-If the face extraction stage fails, the resulting comparison may not be meaningful.
-Not a Biometric Verification System
-This application should not be treated as a secure identity-verification or authentication system.
-For production identity verification, specialized face-recognition/biometric algorithms, appropriate evaluation datasets, security controls, and privacy safeguards would be required.
+The results should not be used as the sole basis for authentication, identity verification, access control, or other high-risk decisions.
 
-Future Improvements
-Possible future improvements include:
-More robust face detection
-Face alignment before comparison
-Improved image preprocessing
-Automatic image resizing
-Multiple comparison algorithms
-Feature-based face comparison
-Deep-learning-based face embeddings
-Adjustable similarity thresholds through the UI
-Configuration files for processing parameters
-More detailed CSV reports
-Statistics and result visualization
-Support for larger datasets
-Parallel image processing
-Better error reporting
-Unit and integration tests
-Packaging the application as a standalone executable
-Privacy Considerations
-ID documents and selfies can contain sensitive personal information.
-When using this application:
-
-Use only images you are authorized to process.
-Avoid uploading personal datasets to public repositories.
-Do not commit real ID documents or selfies to GitHub.
-Remove sensitive images before publishing the project.
-Consider adding dataset directories to .gitignore.
-Follow applicable privacy and data-protection requirements.
-For example, a .gitignore file can contain:
-dataset/
-*.jpg
-*.jpeg
-*.png
-*.webp
-
-This helps prevent accidentally committing image data to the repository.
-Contributing
-Contributions and improvements are welcome.
-To contribute:
-
-Fork the repository.
-Create a new branch:
-git checkout -b feature/my-improvement
-
-Make your changes.
-Test the application.
-Commit your changes:
-git commit -m "Add my improvement"
-
-Push the branch:
-git push origin feature/my-improvement
-
-Open a Pull Request.
 License
-If this project does not currently have a license, you can add one before publishing it publicly.
-For example, you may choose the MIT License and add a LICENSE file to the repository.
+No license has been specified for this project yet.
+If the project is published as open source, an appropriate license such as the MIT License, Apache License 2.0, or GPL-3.0 can be added.
 
 Author
 Syuzanna Harutyunyan
-Created as a practical Java image-processing project for experimenting with face extraction, image comparison, grayscale histograms, and graphical result analysis.
-
-Acknowledgements
-This project demonstrates how traditional image-processing techniques can be combined with a Java desktop interface to create a simple image-comparison workflow.
-Disclaimer
-This software is provided for educational and experimental purposes.
-The comparison result is based on image-processing techniques and should not be interpreted as definitive proof that two images belong to the same person.
-
-The author is not responsible for decisions made solely on the basis of the application's comparison results.
-
