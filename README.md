@@ -1,7 +1,3 @@
-Of course. Here is the complete version formatted properly as GitHub Markdown. You can copy everything inside the block directly into README.md.
-Writing
-
-
 Face ID Comparison
 A Java desktop application for comparing ID photos and selfies using image processing and grayscale histogram correlation.
 The application was created to make it easier to process a dataset of ID and selfie images, extract the relevant face regions, compare the resulting images, and review the results through a simple graphical interface.
