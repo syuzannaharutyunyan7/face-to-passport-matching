@@ -1,4 +1,3 @@
-```markdown
 # Face ID Comparison
 
 A Java desktop application for comparing ID photos and selfies using image processing and grayscale histogram correlation.
@@ -663,4 +662,3 @@ Author
 Syuzanna Harutyunyan
 Face ID Comparison is a Java desktop application for image processing, face extraction, ID/selfie comparison, and grayscale histogram analysis.
 
-```
