@@ -661,4 +661,3 @@ GNU General Public License v3.0
 Author
 Syuzanna Harutyunyan
 Face ID Comparison is a Java desktop application for image processing, face extraction, ID/selfie comparison, and grayscale histogram analysis.
-
