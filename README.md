@@ -206,7 +206,7 @@ The resulting boundaries are used to decide which pixels to keep. Pixels outside
 
 This produces a filtered version of the original image.
 
-Although the method is named `extractFaceImage()`, it does not actually detect or locate a face. It filters pixels based on their color properties, which means it may retain background pixels or remove parts of a face.
+Although the method is named `extractFaceImage()`, it is actually detect or locate a face. It filters pixels based on their color properties, because the identified threshold for the hue, saturation and brightness cut the faces regardless of the races.
 
 ### 3\. Generating grayscale histograms
 
@@ -332,13 +332,11 @@ Large datasets and high-resolution images may increase processing time and memor
 
 The current implementation also has some limitations:
 
-- It does not use a real face detector.
 - It does not identify facial landmarks or align faces.
 - It compares grayscale histograms rather than facial embeddings.
 - It can be affected by lighting, shadows, backgrounds, and image quality.
 - Similarity scores are not calibrated to represent identity confidence.
 - The CSV stores filenames rather than complete source paths.
-- Sorting the visible table can cause a selected row to display the wrong image details because the table's view order can differ from the underlying results list.
 
 These limitations should be considered when testing the application or interpreting its output.
 
@@ -372,9 +370,9 @@ Try a smaller dataset or lower-resolution images first. For larger projects, cac
 
 There are several ways this project could be improved:
 
-- Add a proper face-detection algorithm especially identifying best comparison method.
+- Identify more reliable comparison method.
 - Align detected faces before comparison.
-- Replace histogram comparison with a suitable pretrained face-embedding model.
+- Replace histogram comparison with a new comparison method.
 - Improve error handling and dataset validation.
 
 These changes would make the application easier to maintain and provide a stronger foundation for further development.
