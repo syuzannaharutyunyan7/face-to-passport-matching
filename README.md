@@ -212,7 +212,7 @@ Comparison_Results.csv
 
 The file is saved in the selected dataset folder.
 
-You can open it with Excel, LibreOffice Calc, or another program that supports CSV files.
+You can open it with Excel, TextEdit, or another program that supports CSV files.
 
 ## How the Image Processing Works
 
