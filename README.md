@@ -1,8 +1,8 @@
-# Face ID Dataset Search and Comparison System
+# Face To Passport Matching System
 
 ## About the Project
 
-The **Face ID Dataset Search and Comparison System** is a Java desktop application that allows users to compare selfie images with ID photos stored in a local dataset.
+The **Face To Passport Marching System** is a Java desktop application that allows users to compare selfie images with ID photos stored in a local dataset.
 
 The application has a graphical interface built with Java Swing, making it easy to upload images, select a dataset folder, run comparisons, and view the results without using the command line for everyday tasks.
 
