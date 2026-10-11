@@ -10,8 +10,6 @@ It uses a custom image-processing technique to filter image colors, generate gra
 
 This project was developed to explore image processing and image similarity using Java.
 
-**Note:** The current version does not use a trained facial recognition model. It compares image histograms rather than directly identifying facial features, so its results should be treated as similarity estimates, not proof that two images belong to the same person.
-
 ## Features
 
 The application includes the following features:
