@@ -2,7 +2,7 @@
 
 ## About the Project
 
-The **Face To Passport Marching System** is a Java desktop application that allows users to compare selfie images with ID photos stored in a local dataset.
+The **Face To Passport Matching System** is a Java desktop application that allows users to compare selfie images with ID photos stored in a local dataset.
 
 The application has a graphical interface built with Java Swing, making it easy to upload images, select a dataset folder, run comparisons, and view the results without using the command line for everyday tasks.
 
@@ -64,48 +64,78 @@ You can also check the Java compiler with:
 ```
 javac -version
 ```
+# Installation and Setup
 
-## Installation and Setup
+Follow the steps below to install and run the Face ID Comparison application.
 
-### 1\. Save the Java file
+## Step 1: Download the JAR File
 
-Save the source code as:
+Download or copy the provided `.jar` file into a folder on your computer.
+
+Example project structure:
 
 ```
-Face_ID_Comparison_UI_new.java
+Face-ID-Comparison/
+└── Face_To_Passport_Matching_System.jar
 ```
 
-The filename must match the public class name.
+## Step 2: Check the Java Installation
 
-### 2\. Open the project directory
+Make sure Java is installed on your computer. Open a terminal or command prompt and run:
 
-Open a terminal and navigate to the folder containing the Java file.
+```
+java -version
+```
 
-For example:
+If Java is not installed, download and install a compatible Java Runtime Environment (JRE) or Java Development Kit (JDK).
+
+**Recommendation:** JDK 17 or later, provided it is compatible with the application.
+
+## Step 3: Open the Project Directory
+
+Open a terminal or command prompt and navigate to the folder containing the JAR file.
 
 ```
 cd Face-ID-Comparison
 ```
 
-### 3\. Compile the application
+## Step 4: Run the Application
 
-Run the following command:
-
-```
-javac Face_ID_Comparison_UI_new.java
-```
-
-If compilation is successful, Java will generate the required `.class` files.
-
-### 4\. Run the application
-
-Start the program with:
+Start the application using the following command:
 
 ```
-java Face_ID_Comparison_UI_new
+java -jar Face_To_Passport_Matching_System.jar
 ```
 
-The application window should open, and you can begin selecting images.
+Replace `Face_To_Passport_Matching_System.jar` with the actual name of your JAR file if it differs.
+
+## Step 5: Start Using the Application
+
+If the JAR file is executable and all required dependencies are available, the application window should open.
+
+You can then:
+
+- Upload selfie images.
+- Select the ID-photo dataset.
+- Run face comparisons.
+- Review the comparison results.
+
+## Troubleshooting
+
+If the application fails to start, check the following:
+
+- **Java Installation:** Run `java -version` to verify that Java is installed.
+- **Java Compatibility:** Ensure your installed Java version is compatible with the application.
+- **JAR File Name:** Verify that the file name matches the command you are running.
+- **Project Directory:** Ensure the terminal is open in the folder containing the JAR file.
+- **Dependencies:** Make sure all required libraries and dependencies are available.
+- **Executable JAR:** Ensure the JAR file is configured with the required application entry point.
+
+## Note
+
+You do not need to compile the Java source code separately when running an executable JAR file.
+
+Simply install a compatible Java version, navigate to the directory containing the JAR file, and execute the command provided above.
 
 ## How to Use the Application
 
